@@ -1,0 +1,16 @@
+{
+  "name": "nodeapi",
+  "version": "1.0.0",
+  "description": "Setting up your project to learn nodejs and express",
+  "license": "ISC",
+  "author": "Gabriel Deng",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "mysql2": "^3.19.0"
+  }
+}

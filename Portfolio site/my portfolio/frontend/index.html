@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gabriel Deng | Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <!-- ========== HEADER / NAVBAR ========== -->
+  <header class="navbar">
+    <div class="logo">
+      <a href="#"><span>Gab</span>riel.</a>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section id="home">
+    <div class="intro">
+      <h2>Hi, I'm <span>Gabriel Deng</span></h2>
+      <h3>Software Developer & Computer Science Student at Aston University</h3>
+      <p>
+        I’m a passionate software developer who loves bringing ideas to life through 
+        clean, interactive, and functional web applications.
+      </p>
+      <p>
+        My technical expertise includes <strong>HTML, CSS, JavaScript, Node.js, Express.js, 
+        WebSockets, and Python</strong>, with growing experience in <strong>TypeScript</strong>. 
+        I’ve developed several projects focused on usability and clean design.
+      </p>
+      <div class="cta-buttons">
+        <a href="#projects" class="btn">View My Projects</a>
+        <a href="#contact" class="btn secondary">Get In Touch</a>
+      </div>
+    </div>
+    <div class="intro-image">
+      <img src="images/profile.jpeg" alt="Photo of Gabriel Deng">
+    </div>
+  </section>
+
+  <!-- ========== ABOUT SECTION ========== -->
+  <section id="about">
+    <div class="container about-container">
+      <div class="about-img">
+        <img src="images/profile2.png" alt="Gabriel Deng portrait" />
+      </div>
+      <div class="about-text">
+        <h2 class="section-title">About Me</h2>
+        <p>
+          Gabriel has expanded his knowledge and expertise through various training programs
+          and courses, both within South Sudan and internationally.
+        </p>
+
+        <!-- ===== TABS SECTION ===== -->
+        <div class="tabs-container">
+          <div class="tab-buttons">
+            <button class="tab-btn active" data-tab="skills">Skills</button>
+            <button class="tab-btn" data-tab="experience">Experience</button>
+            <button class="tab-btn" data-tab="education">Education</button>
+          </div>
+
+          <div class="tabs">
+            <!-- ===== SKILLS ===== -->
+            <div class="tab-content active" id="skills">
+              <h3>Skills</h3>
+              <ul>
+                <li><span>Web Development:</span> Building responsive, interactive websites using HTML, CSS, and JavaScript</li>
+                <li><span>Software Development:</span> Designing and developing full-stack applications with modern frameworks</li>
+                <li><span>UI/UX Design:</span> Creating user-friendly interfaces and improving accessibility</li>
+                <li><span>Version Control:</span> Using Git and GitHub for collaboration and code management</li>
+                <li><span>Problem Solving:</span> Analytical thinking and debugging across front-end and back-end systems</li>
+              </ul>
+            </div>
+
+            <!-- ===== EXPERIENCE ===== -->
+            <div class="tab-content" id="experience">
+              <h3>Experience</h3>
+              <ul>
+                <li><span>2025 – Present:</span> Software Development Trainee at <strong>CodeYourFuture</strong> — working on real-world web applications</li>
+                <li><span>2024 – 2025:</span> Student Developer at <strong>South and City College</strong> — built several academic projects</li>
+                <li><span>2023 – 2024:</span> Freelance Web Developer — designed and deployed small business websites</li>
+                <li><span>2022 – 2023:</span> Student Mentor — supported peers in programming fundamentals and digital skills</li>
+              </ul>
+            </div>
+
+            <!-- ===== EDUCATION ===== -->
+            <div class="tab-content" id="education">
+              <h3>Education</h3>
+              <ul>
+                <li><span>2025 – Present:</span> BSc Computer Science, <strong>Aston University, Birmingham</strong></li>
+                <li><span>2024 – Present:</span> Software Development Program, <strong>CodeYourFuture</strong></li>
+                <li><span>2016 – 2024:</span> Diploma in Computer Science, <strong>South and City College Birmingham</strong></li>
+                <li><span>2019 – 2022:</span> Biology, Chemistry, Mathematics with ICT, <strong>Leadership Academy of South Sudan</strong></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROJECTS SECTION ========== -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="images/chat.png" alt="Basic live chat application Project" />
+          <h3><a href="https://gai93003-chat-application-websocket-frontend.hosting.codeyourfuture.io">Live Chat Application</a></h3>
+          <p>Allows users to have instant group chats with friends dynamically.</p>
+          <p><strong>Tech:</strong> JavaScript, DOM, ExpressJs and WebSockets</p>
+          <a href="" target="_blank">View Code</a>
+        </div>
+
+        <div class="project-card">
+          <img src="images/tv.png" alt="tv show" />
+          <h3><a href="https://spell-checker-gabriel.netlify.app/">TV Shows</a></h3>
+          <p>This simple application allows users to search for tv shows and show the list of episodes.</p>
+          <p><strong>Tech:</strong> JavaScript, DOM, ExpressJs and WebSockets</p>
+          <a href="https://github.com/gabriel/shared-bookmarks" target="_blank">View Code</a>
+        </div>
+
+        <div class="project-card">
+          <img src="images/day-calender.png" alt="days calender" />
+          <h3><a href="https://piscine-pdays-calender-project.netlify.app/">Days Calendar</a></h3>
+          <p>Shows days of a month, including commemorative days.</p>
+          <p><strong>Tech:</strong> HTML, JavaScript</p>
+          <a href="https://github.com/gai93003/Piscine-Project-Days-Calender" target="_blank">View Code</a>
+        </div>
+
+        <div class="project-card">
+          <img src="images/basic-spell.png" alt="spell checker" />
+          <h3><a href="https://spell-checker-project-gabriel.netlify.app">Basic Spell Checker</a></h3>
+          <p>Checks spelling mistakes against a preset dictionary.</p>
+          <p><strong>Tech:</strong> HTML, JavaScript</p>
+          <a href="https://github.com/gai93003/Piscine-Project-Spell-Checker" target="_blank">View Code</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT SECTION ========== -->
+  <section id="contact">
+    <div class="container contact-container">
+      <h2 class="section-title">Get in Touch</h2>
+      <p>Interested in collaborating or just want to say hi? Send me a message below 👋🏽</p>
+
+      <form id="contact-form">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit" class="cta">Send Message</button>
+      </form>
+
+      <div class="social-links">
+        <a href="https://github.com/gabriel" target="_blank">GitHub</a> |
+        <a href="https://linkedin.com/in/gabriel" target="_blank">LinkedIn</a> |
+        <a href="mailto:youremail@example.com">Email</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <p>© 2025 Gabriel Deng. All rights reserved.</p>
+  </footer>
+
+  <!-- ========== VANTA BACKGROUND ========== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+  <script>
+    VANTA.NET({
+      el: "body",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      color: 0x135caf,
+      backgroundColor: 0x0f172a
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2-Week Data Modeling Plan (Supabase + Postgres)</title>
+  <style>
+    :root {
+      --bg: #f8f7f4;
+      --text: #1f2937;
+      --muted: #4b5563;
+      --accent: #1d4ed8;
+      --card: #ffffff;
+      --border: #d1d5db;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Liberation Serif", Georgia, serif;
+      line-height: 1.5;
+    }
+
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 36px 28px;
+    }
+
+    h1, h2 {
+      margin: 0 0 10px 0;
+      line-height: 1.2;
+      font-family: "Liberation Sans", Arial, sans-serif;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-top: 26px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    .meta {
+      color: var(--muted);
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+
+    .day-title {
+      font-family: "Liberation Sans", Arial, sans-serif;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #111827;
+    }
+
+    ul {
+      margin: 6px 0 8px 18px;
+      padding: 0;
+    }
+
+    li {
+      margin: 4px 0;
+    }
+
+    .links a {
+      color: #0f3ea7;
+      text-decoration: none;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1>2-Week Data Modeling Plan</h1>
+    <p class="meta">Focus: Supabase + PostgreSQL | Time: 60-90 mins/day | Goal: Build strong, practical schema design skills</p>
+
+    <h2>Learning Goal</h2>
+    <div class="card">
+      <p>By the end of 2 weeks, you should be able to:</p>
+      <ul>
+        <li>Choose between current-state tables and history/log tables with clear reasoning.</li>
+        <li>Use constraints and foreign keys to protect data quality.</li>
+        <li>Design Row Level Security (RLS) based on trust boundaries.</li>
+        <li>Write and review migrations with confidence in real project work.</li>
+      </ul>
+    </div>
+
+    <h2>Week 1: Core Modeling Skills</h2>
+
+    <div class="card">
+      <div class="day-title">Day 1: Table Design Fundamentals</div>
+      <ul>
+        <li>Learn entities, relationships, primary keys, and foreign keys.</li>
+        <li>Read:
+          <span class="links">
+            <a href="https://www.postgresql.org/docs/current/ddl.html">PostgreSQL DDL</a>,
+            <a href="https://www.postgresql.org/docs/current/ddl-constraints.html">PostgreSQL Constraints</a>
+          </span>
+        </li>
+        <li>Practice: sketch users, codewars_accounts, and one related table.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="day-title">Day 2: Constraints as Safety Nets</div>
+      <ul>
+        <li>Study NOT NULL, UNIQUE, CHECK, and FK cascade behavior.</li>
+        <li>Practice writing and testing constraints for usernames and ownership.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="day-title">Day 3: Normalization (Practical)</div>
+      <ul>
+        <li>Learn 1NF/2NF/3NF at a practical level.</li>
+        <li>Read: <span class="links"><a href="https://en.wikipedia.org/wiki/Database_normalization">Database Normalization</a></span></li>
+        <li>Review one migration and identify any redundant or mixed concerns.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="day-title">Day 4: RLS and Trust Boundaries</div>
+      <ul>
+        <li>Understand who can read/write which data and why.</li>
+        <li>Read: <span class="links"><a href="https://supabase.com/docs/guides/database/postgres/row-level-security">Supabase RLS Guide</a></span></li>
+        <li>Practice: separate user-managed fields from system-managed fields.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="day-title">Day 5: UPDATE vs Log Table Modeling</div>
+      <ul>
+        <li>Compare update-in-place vs append-only history designs.</li>
+        <li>Read: <span class="links"><a href="https://martinfowler.com/eaaDev/timeNarrative.html">Temporal Patterns</a></span></li>
+        <li>Practice both designs for Codewars progress data.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="day-title">Day 6: Review and Notes</div>
+      <ul>
+        <li>Create a one-page summary: when to use snapshot tables, when to use log tables.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="day-title">Day 7: Teach-Back Check</div>
+      <ul>
+        <li>Explain your understanding out loud in 5 minutes without notes.</li>
+      </ul>
+    </div>
+
+    <h2>Week 2: Project-Style Practice</h2>
+
+    <div class="card">
+      <div class="day-title">Day 8: Read Existing Migrations</div>
+      <ul>
+        <li>Inspect migration files and summarize design choices in 2-3 lines each.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="day-title">Day 9: Model One Feature Two Ways</div>
+      <ul>
+        <li>Build one schema with UPDATE-in-place and another with log history.</li>
+        <li>Compare complexity, query simplicity, and analytical value.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="day-title">Day 10: Query Patterns</div>
+      <ul>
+        <li>Write current-state query, latest-history query, and trend-over-time query.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="day-title">Day 11: Migration Evolution Plan</div>
+      <ul>
+        <li>Plan a safe transition from snapshot-only to hybrid snapshot + log.</li>
+        <li>Think in steps: add table, backfill, switch reads, deprecate old paths.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="day-title">Day 12: Security-First Modeling</div>
+      <ul>
+        <li>Write policy intent before SQL: who can insert, update, delete, select.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="day-title">Day 13: PR Review Simulation</div>
+      <ul>
+        <li>Review your own schema as a mentor would: history value, trust boundaries, future queries.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="day-title">Day 14: Final Decision Template</div>
+      <ul>
+        <li>Create a reusable checklist:
+          <ul>
+            <li>Data shape</li>
+            <li>Constraints</li>
+            <li>RLS</li>
+            <li>Snapshot vs log decision</li>
+            <li>Future migration path</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <h2>Success Criteria</h2>
+    <div class="card">
+      <ul>
+        <li>You can justify schema choices clearly in PR discussions.</li>
+        <li>You can explain UPDATE vs log-table trade-offs with confidence.</li>
+        <li>You design RLS alongside schema, not as an afterthought.</li>
+        <li>You can propose safe evolution paths for future requirements.</li>
+      </ul>
+    </div>
+  </main>
+</body>
+</html>
