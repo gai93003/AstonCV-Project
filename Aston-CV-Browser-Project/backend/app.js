@@ -1,9 +1,9 @@
-require("dotenv").config();
+require("dotenv").config({ quiet: true });
 const express = require("express");
 const cors = require("cors");
 
 if (!process.env.JWT_SECRET) {
-	console.error("Missing JWT_SECRET in backend/.env");
+	console.error("Missing JWT_SECRET environment variable. Set it in your host environment settings.");
 	process.exit(1);
 }
 
