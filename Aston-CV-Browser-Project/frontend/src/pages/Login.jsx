@@ -5,23 +5,28 @@ import API from "../services/api";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const login = async () => {
     if (!email || !password) {
-      alert("Please enter email and password");
+      setErrorMessage("Please enter both your email and password to sign in.");
       return;
     }
+
+    setErrorMessage("");
 
     try {
       const res = await API.post("/auth/login", { email, password });
 
       localStorage.setItem("token", res.data.token);
-      alert("Login successfully!");
       navigate("/dashboard");
     }
     catch (err) {
-      alert(err.response?.data?.message || "Login failed");
+      setErrorMessage(
+        err.response?.data?.message ||
+          "We couldn't log you in. Check your credentials and make sure the server is available."
+      );
     }
   };
 
@@ -52,6 +57,12 @@ const Login = () => {
           <button onClick={login} className="ui-btn-primary w-full">
             Login
           </button>
+
+          {errorMessage && (
+            <p className="rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-sm text-rose-700">
+              {errorMessage}
+            </p>
+          )}
         </div>
       </div>
     </section>

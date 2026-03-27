@@ -6,14 +6,19 @@ const Dashboard = () => {
   const [profile, setProfile] = useState("");
   const [keyprogramming, setKeyprogramming] = useState("");
   const [urllinks, setUrllinks] = useState("");
+  const [statusMessage, setStatusMessage] = useState("");
+  const [statusType, setStatusType] = useState("error");
 
 
   const updateCV = async () => {
     const token = localStorage.getItem("token");
     if (!token) {
-      alert("Please login first");
+      setStatusType("error");
+      setStatusMessage("You need to log in before saving CV changes.");
       return;
     }
+
+    setStatusMessage("");
 
     try {
       await API.post(
@@ -26,10 +31,15 @@ const Dashboard = () => {
         }
       );
 
-      alert("CV updated!");
+      setStatusType("success");
+      setStatusMessage("Your CV has been updated successfully.");
     }
     catch (err) {
-      alert(err.response?.data?.message || "Error updating CV");
+      setStatusType("error");
+      setStatusMessage(
+        err.response?.data?.message ||
+          "We couldn't update your CV. Please check your input and ensure the API server is online."
+      );
     }
   };
 
@@ -72,6 +82,18 @@ const Dashboard = () => {
       <button onClick={updateCV} className="ui-btn-primary mt-6 px-6">
         Save CV
       </button>
+
+      {statusMessage && (
+        <p
+          className={`mt-4 rounded-xl border px-3 py-2 text-sm ${
+            statusType === "success"
+              ? "border-emerald-200 bg-emerald-50 text-emerald-700"
+              : "border-rose-200 bg-rose-50 text-rose-700"
+          }`}
+        >
+          {statusMessage}
+        </p>
+      )}
     </section>
   );
 }

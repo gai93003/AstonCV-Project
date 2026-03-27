@@ -6,21 +6,26 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const register = async () => {
     if (!name || !email || !password) {
-      alert("Please fill all fields");
+      setErrorMessage("Please complete your name, email, and password to create an account.");
       return;
     }
 
+    setErrorMessage("");
+
     try {
       await API.post("/auth/register", { name, email, password });
-      alert("Registered successfully");
       navigate("/login");
     }
     catch (err) {
-      alert(err.response?.data?.message || "Error registering");
+      setErrorMessage(
+        err.response?.data?.message ||
+          "We couldn't create your account right now. Try again in a moment or use a different email address."
+      );
     }
   };
 
@@ -59,6 +64,12 @@ const Register = () => {
           <button onClick={register} className="ui-btn-accent w-full">
             Register
           </button>
+
+          {errorMessage && (
+            <p className="rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-sm text-rose-700">
+              {errorMessage}
+            </p>
+          )}
         </div>
       </div>
     </section>
