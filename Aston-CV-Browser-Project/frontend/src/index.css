@@ -10,6 +10,9 @@
   --text-main: #1a202c;
   --text-muted: #5f6b7a;
   --primary: #0f766e;
+  --shadow-sm: 0 2px 8px rgba(12, 23, 43, 0.08);
+  --shadow-md: 0 8px 24px rgba(12, 23, 43, 0.12);
+  --shadow-lg: 0 16px 40px rgba(12, 23, 43, 0.16);
 }
 
 html,
@@ -34,13 +37,13 @@ a {
 
 .Container {
   background: #ffffff;
-  box-shadow: 10px 10px 20px #babecc, -10px -10px 20px #ffffff;
+  box-shadow: var(--shadow-md);
 }
 
 .frosted {
   background: var(--surface);
   border: 1px solid var(--surface-border);
-  box-shadow: 10px 10px 20px #babecc, -10px -10px 20px #ffffff;
+  box-shadow: var(--shadow-sm);
 }
 
 @layer components {
@@ -48,7 +51,7 @@ a {
     @apply rounded-3xl p-6 sm:p-8;
     background: #ffffff;
     border: 1px solid var(--surface-border);
-    box-shadow: 10px 10px 20px #babecc, -10px -10px 20px #ffffff;
+    box-shadow: var(--shadow-md);
   }
 
   .ui-input {
@@ -56,7 +59,7 @@ a {
     border-color: #d6deea;
     background: #ffffff;
     color: var(--text-main);
-    box-shadow: inset 4px 4px 8px #d7dde8, inset -4px -4px 8px #ffffff;
+    box-shadow: inset 0 1px 2px rgba(12, 23, 43, 0.06);
   }
 
   .ui-input::placeholder {
@@ -65,28 +68,33 @@ a {
 
   .ui-input:focus {
     border-color: #0f766e;
+    box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.18);
   }
 
   .ui-btn-primary {
     @apply rounded-2xl px-5 py-3 text-sm font-semibold transition;
     color: #ffffff;
     background: var(--primary);
-    box-shadow: 10px 10px 20px #babecc, -10px -10px 20px #ffffff;
+    box-shadow: var(--shadow-sm);
   }
 
   .ui-btn-primary:hover {
     background: #0d6861;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
   }
 
   .ui-btn-accent {
     @apply rounded-2xl px-5 py-3 text-sm font-semibold transition;
     color: #1f2937;
     background: #fbbf24;
-    box-shadow: 10px 10px 20px #babecc, -10px -10px 20px #ffffff;
+    box-shadow: var(--shadow-sm);
   }
 
   .ui-btn-accent:hover {
     background: #f59e0b;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
   }
 
   .ui-btn-danger {
@@ -94,10 +102,12 @@ a {
     border-color: #f0b0b7;
     color: #9f1239;
     background: #ffffff;
-    box-shadow: 10px 10px 20px #babecc, -10px -10px 20px #ffffff;
+    box-shadow: var(--shadow-sm);
   }
 
   .ui-btn-danger:hover {
     background: #fff3f5;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
   }
 }
