@@ -1,5 +1,4 @@
-CREATE DATABASE IF NOT EXISTS astoncv;
-USE astoncv;
+-- Run this against the dg250109661_db database
 
 CREATE TABLE IF NOT EXISTS users (
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
