@@ -3,8 +3,8 @@ const express = require("express");
 const cors = require("cors");
 
 if (!process.env.JWT_SECRET) {
-	console.error("Missing JWT_SECRET environment variable. Set it in your host environment settings.");
-	process.exit(1);
+	process.env.JWT_SECRET = `dev-fallback-${Date.now()}`;
+	console.warn("JWT_SECRET is missing. Using a temporary fallback secret. Set JWT_SECRET in host environment settings.");
 }
 
 const app = express();
