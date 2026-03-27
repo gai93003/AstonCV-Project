@@ -10,7 +10,25 @@ if (!process.env.JWT_SECRET) {
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+const allowedOrigins = (process.env.CORS_ORIGINS || "")
+	.split(",")
+	.map((origin) => origin.trim())
+	.filter(Boolean);
+
+const corsOptions = {
+	origin: (origin, callback) => {
+		if (!origin || allowedOrigins.length === 0 || allowedOrigins.includes(origin)) {
+			callback(null, true);
+			return;
+		}
+
+		callback(new Error("Not allowed by CORS"));
+	},
+	methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+	allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Routes
