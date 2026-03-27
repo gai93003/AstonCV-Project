@@ -1,6 +1,7 @@
 require("dotenv").config({ quiet: true });
 const express = require("express");
 const cors = require("cors");
+const db = require("./config/db");
 
 if (!process.env.JWT_SECRET) {
 	process.env.JWT_SECRET = `dev-fallback-${Date.now()}`;
@@ -54,6 +55,16 @@ app.use(express.json());
 
 app.get("/health", (_req, res) => {
 	res.status(200).json({ ok: true, service: "astoncv-backend" });
+});
+
+app.get("/health/db", (_req, res) => {
+	db.query("SELECT 1 AS ok", (err) => {
+		if (err) {
+			return res.status(500).json({ ok: false, message: err.message });
+		}
+
+		return res.status(200).json({ ok: true });
+	});
 });
 
 // Routes
