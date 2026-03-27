@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
+import { HDRLoader } from "three/examples/jsm/loaders/HDRLoader.js";
 
 const HDR_URL =
   "https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/equirectangular/venice_sunset_1k.hdr";
@@ -39,7 +39,6 @@ function ThreeBackground() {
     controls.target.set(0, 0.2, 0);
     controls.update();
 
-    const clock = new THREE.Clock();
     let fallbackMesh = null;
 
     const addFallbackModel = () => {
@@ -77,12 +76,12 @@ function ThreeBackground() {
     };
 
     const loadScene = async () => {
-      const rgbeLoader = new RGBELoader();
+      const hdrLoader = new HDRLoader();
       const gltfLoader = new GLTFLoader();
 
       try {
         const [texture, gltf] = await Promise.all([
-          rgbeLoader.loadAsync(HDR_URL),
+          hdrLoader.loadAsync(HDR_URL),
           gltfLoader.loadAsync(LAMP_URL),
         ]);
 
@@ -107,7 +106,7 @@ function ThreeBackground() {
     window.addEventListener("resize", onWindowResize);
 
     const animate = () => {
-      const elapsed = clock.getElapsedTime();
+      const elapsed = performance.now() * 0.001;
       if (fallbackMesh) {
         fallbackMesh.rotation.y = elapsed * 0.35;
         fallbackMesh.rotation.x = Math.sin(elapsed * 0.4) * 0.15;
