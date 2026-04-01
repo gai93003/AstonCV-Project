@@ -1,0 +1,13 @@
+# Local Python environments
+Bot/
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Local app/runtime data
+.env
+scheduler.db
+PyWhatKit_DB.txt
