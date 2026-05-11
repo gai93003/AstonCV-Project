@@ -9,7 +9,7 @@ if (!process.env.JWT_SECRET) {
 }
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || process.env.PORT_PORT || 5000;
 
 const allowedOrigins = (process.env.CORS_ORIGINS || "")
 	.split(",")
