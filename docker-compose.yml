@@ -1,0 +1,50 @@
+services:
+  mysql:
+    image: mysql:8
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpassword}
+      MYSQL_DATABASE: ${DB_NAME:-astoncv}
+      MYSQL_USER: ${DB_USER:-astoncv_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-astoncv_password}
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./Aston-CV-Browser-Project/backend/sql/cvs.sql:/docker-entrypoint-initdb.d/cvs.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD:-rootpassword}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./Aston-CV-Browser-Project/backend
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      PORT: 5000
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: ${DB_USER:-astoncv_user}
+      DB_PASSWORD: ${DB_PASSWORD:-astoncv_password}
+      DB_NAME: ${DB_NAME:-astoncv}
+      JWT_SECRET: ${JWT_SECRET:-change-me-to-a-long-random-secret}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000}
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build:
+      context: ./Aston-CV-Browser-Project/frontend
+      args:
+        REACT_APP_API_URL: /api
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+
+volumes:
+  db_data:

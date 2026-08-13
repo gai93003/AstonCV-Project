@@ -1,7 +1,21 @@
 require("dotenv").config({ quiet: true });
+const fs = require("fs");
+const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const db = require("./config/db");
+
+async function runMigrations() {
+	const sql = fs.readFileSync(path.join(__dirname, "sql", "cvs.sql"), "utf8");
+	const statements = sql
+		.split(";")
+		.map((statement) => statement.trim())
+		.filter(Boolean);
+
+	for (const statement of statements) {
+		await db.promise().query(statement);
+	}
+}
 
 if (!process.env.JWT_SECRET) {
 	process.env.JWT_SECRET = `dev-fallback-${Date.now()}`;
@@ -71,4 +85,9 @@ app.get("/health/db", (_req, res) => {
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/cv", require("./routes/cvRoutes"));
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+runMigrations()
+	.then(() => console.log("Database schema is up to date"))
+	.catch((err) => console.error("Migration failed:", err.message))
+	.finally(() => {
+		app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+	});

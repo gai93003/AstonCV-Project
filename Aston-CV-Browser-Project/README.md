@@ -137,3 +137,35 @@ Fix:
 Press Ctrl+C in each terminal running:
 - backend node app.js
 - frontend npm start
+
+## 10. Running with Docker
+
+The whole stack (MySQL, backend, frontend) can also be run with Docker Compose, without installing Node or MySQL locally.
+
+From the repository root (one level above this folder):
+
+  cp .env.example .env
+
+Edit `.env` if you want to change credentials, then:
+
+  docker compose up -d --build
+
+This will:
+- Start a MySQL 8 container and seed it from `Aston-CV-Browser-Project/backend/sql/cvs.sql`
+- Build and run the backend on http://localhost:5000
+- Build and run the frontend (served by nginx) on http://localhost:3000, with `/api/*` requests proxied to the backend
+
+Check container status and logs:
+
+  docker compose ps
+  docker compose logs -f
+
+Stop everything:
+
+  docker compose down
+
+Add `-v` to also delete the MySQL data volume:
+
+  docker compose down -v
+
+Each service also has its own standalone `Dockerfile` (`backend/Dockerfile`, `frontend/Dockerfile`) if you only need to build/run one of them, e.g. for the CYF hosting platform's Dockerfile build pack.
