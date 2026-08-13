@@ -50,33 +50,44 @@ const Dashboard = () => {
       <p className="mt-2 text-sm text-slate-600">Keep your profile current so recruiters can find the right fit.</p>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
+        <label>
+          Education
         <input
           placeholder="Education"
           value={education}
           onChange={(e) => setEducation(e.target.value)}
           className="ui-input"
         />
-
+      </label>
+      <label>
+        Languages
         <input
           placeholder="Key Programming Language"
           value={keyprogramming}
           onChange={(e) => setKeyprogramming(e.target.value)}
           className="ui-input"
         />
+        </label>
 
+        <label>
+          Summary
         <input
           placeholder="Profile Summary"
           value={profile}
           onChange={(e) => setProfile(e.target.value)}
           className="ui-input sm:col-span-2"
         />
+        </label>
 
+        <label>
+          Portfolio
         <input
           placeholder="Portfolio / GitHub / LinkedIn URL"
           value={urllinks}
           onChange={(e) => setUrllinks(e.target.value)}
           className="ui-input sm:col-span-2"
         />
+        </label>
       </div>
 
       <button onClick={updateCV} className="ui-btn-primary mt-6 px-6">
