@@ -1,5 +1,0 @@
-Flask
-twilio
-python-dotenv
-pywhatkit
-requests
